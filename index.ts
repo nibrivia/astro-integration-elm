@@ -38,6 +38,11 @@ const elmPlugin = (elmCompilerOptions: ElmCompilerOptions): Plugin => ({
   name: "vite-plugin-elm",
   async transform(code, id, options) {
     if (!id.endsWith(".elm")) return;
+    if (id.startsWith("\0") && id.includes(":")) {
+      // components start with a null-byte and look like "\0astro-component:/path/to/MyFile.elm"
+      // see: https://vitejs.dev/guide/api-plugin.html#virtual-modules-convention
+      id = id.split(":")[1];
+    }
     return compile(id, elmCompilerOptions);
   },
 });

@@ -53,6 +53,7 @@ _src/pages/index.astro_
 
 ```jsx
 ---
+// @ts-ignore
 import Hello from "../components/Hello.elm";
 ---
 

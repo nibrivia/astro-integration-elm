@@ -102,6 +102,9 @@ import Html exposing (button, div, text)
 import Html.Events exposing (onClick)
 import Json.Decode as D
 
+type alias Model =
+    Int
+
 main =
     Browser.element
         { init = init
@@ -109,6 +112,7 @@ main =
         , update = update
         , subscriptions = \_ -> Sub.none
         }
+
 
 init : D.Value -> ( Model, Cmd msg )
 init flags =
@@ -129,7 +133,7 @@ update msg count =
 
 view count =
     div
-      [ text <| toString count
+      [ text <| String.fromInt count
       , button [ onClick Inc ] [ text "+" ]
       , button [ onClick Dec ] [ text "-" ]
       ]

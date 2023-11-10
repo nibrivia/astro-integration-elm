@@ -51,7 +51,7 @@ const devServerMiddleware =
   (elmCompilerOptions: ElmCompilerOptions): Connect.NextHandleFunction =>
   async (req, res, next) => {
     if (req.originalUrl?.endsWith(".elm")) {
-      const filename = req.originalUrl.replace("/@fs", "");
+      const filename = `./${req.originalUrl.replace("/@fs", "")}`;
       const compiled = await compile(filename, elmCompilerOptions);
       res.statusCode = 200;
       res.setHeader("Content-Type", "application/javascript");

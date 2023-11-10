@@ -22,7 +22,7 @@
     "elm-server.js",
     "elm-client.js",
     "index.d.ts",
-    "index.js"
+    "index.ts"
   ],
   "scripts": {
     "build": "tsc"
